@@ -1,0 +1,15 @@
+{
+  "name": "course_code",
+  "version": "1.0.0",
+  "description": "TypeScript Udemy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "author": "Charlie",
+  "license": "ISC",
+  "dependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
