@@ -76,3 +76,17 @@ const result = add(number1, number2, printResult, phraseString);
 // console.log(result);
 */
 
+// ? ===================================================================== 2.16
+// Objects types
+
+// {} TS notation for object types
+const person: {
+    name: string;
+    age: number;
+} = {
+    name: 'Charlie',
+    age: 30
+};
+
+console.log(person);
+console.log(person.name);

@@ -25,20 +25,60 @@ const number2 = 2.8;
 const result = add(number1, number2);
 console.log(result); // 7.8
 */
-// ? ===================================================================== 2.12
+// ? ===================================================================== 2.14
 // Working with numbers, strings and booleans
-function add(n1, n2, showResult, phrase) {
-    var result = n1 + n2;
+/*
+function add(n1: number, n2: number, showResult: boolean, phrase: string) {
+
+    const result = n1 + n2;
     if (showResult) {
         console.log(phrase + result);
-    }
-    else {
+    } else {
         return n1 + n2;
     }
+    
 }
-var number1 = 5;
-var number2 = 2.8;
-var printResult = true;
-var phraseString = 'The result is: ';
-var result = add(number1, number2, printResult, phraseString);
+
+const number1 = 5;
+const number2 = 2.8;
+
+const printResult = true;
+
+const phraseString = 'The result is: ';
+
+const result = add(number1, number2, printResult, phraseString);
 // console.log(result);
+*/
+// ? ===================================================================== 2.15
+// type assignment and type inference
+/*
+function add(n1: number, n2: number, showResult: boolean, phrase: string) {
+
+    const result = n1 + n2;
+    if (showResult) {
+        console.log(phrase + result);
+    } else {
+        return n1 + n2;
+    }
+    
+}
+
+const number1 = 5; // type inference TS understand that is a number is not necessary to assign using variable: number
+const number2 = 2.8;
+
+const printResult = true;
+
+const phraseString = 'The result is: ';
+
+const result = add(number1, number2, printResult, phraseString);
+// console.log(result);
+*/
+// ? ===================================================================== 2.16
+// Objects
+// {} TS notation for object types
+var person = {
+    name: 'Charlie',
+    age: 30
+};
+console.log(person);
+console.log(person.name);
