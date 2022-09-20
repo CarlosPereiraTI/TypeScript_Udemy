@@ -53,4 +53,4 @@ This would be the type of such an object:
 
 So you have an object type in an object type so to say.
 
-repo test
+- Arrays: [1,2,3]

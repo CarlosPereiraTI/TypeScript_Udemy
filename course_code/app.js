@@ -74,11 +74,40 @@ const result = add(number1, number2, printResult, phraseString);
 // console.log(result);
 */
 // ? ===================================================================== 2.16
-// Objects
+// Objects types
+/*
 // {} TS notation for object types
-var person = {
+const person: {
+    name: string;
+    age: number;
+} = {
     name: 'Charlie',
     age: 30
 };
+
 console.log(person);
 console.log(person.name);
+*/
+// ? ===================================================================== 2.18
+// Arrays
+// {} TS notation for object types
+var person = {
+    //     name: string;
+    //     age: number;
+    // } = {
+    name: 'Charlie',
+    age: 30,
+    hobbies: ['Sports', 'Cooking']
+};
+var favoriteActivities;
+// favoriteActivities = 'Sports'; !! Error
+favoriteActivities = ['Sports']; // Is possible to assign a string array
+// favoriteActivities = ['Sports', 1] !!! Error is not possible to assign an integer to an string array
+// possible solution:
+// let favoriteActivities: any[]; !!! Not recommended but is possible
+// console.log(person);
+console.log(person.name);
+for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
+    console.log(hobby);
+}
