@@ -54,3 +54,4 @@ This would be the type of such an object:
 So you have an object type in an object type so to say.
 
 - Arrays: [1,2,3]
+- Tuples: [1,2] / Added by TS: FIxed-length array

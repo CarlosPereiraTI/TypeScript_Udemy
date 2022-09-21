@@ -96,14 +96,32 @@ console.log(person.name);
 // Arrays
 
 // {} TS notation for object types
-const person = {
-//     name: string;
-//     age: number;
-// } = {
+// const person = {
+// //     name: string;
+// //     age: number;
+// // } = {
+//     name: 'Charlie',
+//     age: 30,
+//     hobbies: ['Sports', 'Cooking'],
+//     role: [2, 'author'] // Exactly two elements, we know the length
+// };
+
+const person: {
+        name: string;
+        age: number;
+        hobbies: string[];
+        role: [number, string];
+} = {
     name: 'Charlie',
     age: 30,
-    hobbies: ['Sports', 'Cooking']
+    hobbies: ['Sports', 'Cooking'],
+    role: [2, 'author'] // Exactly two elements, we know the length
 };
+
+// To add an element
+person.role.push('admin');
+// person.role[1] = 10; // This assignment will fail due to position 1 is a string
+
 
 let favoriteActivities: string[];
 // favoriteActivities = 'Sports'; !! Error
