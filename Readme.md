@@ -14,6 +14,8 @@ npm install --save--dev lite-server => to install a lite server to do our tests.
 
 in package.json add in dependencies: "start": "lite-server"
 
+npm start - used to start lite server
+
 SECTION 2:
 =================================================================================
 Core types:
@@ -55,3 +57,8 @@ So you have an object type in an object type so to say.
 
 - Arrays: [1,2,3]
 - Tuples: [1,2] / Added by TS: FIxed-length array
+- Enums: enum {NEW, OLD} | Added by Typescript: Automaticallu enumarated global constant identifiers
+- Any: * | Any kind of values | Avoid if possible
+
+
+2.20

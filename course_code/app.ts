@@ -106,6 +106,10 @@ console.log(person.name);
 //     role: [2, 'author'] // Exactly two elements, we know the length
 // };
 
+
+// ? ===================================================================== 2.18
+// tuples
+/*
 const person: {
         name: string;
         age: number;
@@ -138,3 +142,20 @@ console.log(person.name);
 for (const hobby of person.hobbies) {
     console.log(hobby);
 }
+*/
+// ? ===================================================================== 2.20
+// Enums
+
+enum Role { ADMIN, READ_ONLY, AUTHOR };
+
+const person = {
+    name: 'Charlie',
+    age: 30,
+    hobbies: ['Sports', 'Cooking'],
+    role: Role.ADMIN
+};
+
+if (person.role == Role.ADMIN){
+    console.log("Is ADMIN");
+}
+

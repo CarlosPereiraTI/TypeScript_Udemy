@@ -91,23 +91,66 @@ console.log(person.name);
 // ? ===================================================================== 2.18
 // Arrays
 // {} TS notation for object types
-var person = {
-    //     name: string;
-    //     age: number;
-    // } = {
+// const person = {
+// //     name: string;
+// //     age: number;
+// // } = {
+//     name: 'Charlie',
+//     age: 30,
+//     hobbies: ['Sports', 'Cooking'],
+//     role: [2, 'author'] // Exactly two elements, we know the length
+// };
+// ? ===================================================================== 2.18
+// tuples
+/*
+const person: {
+        name: string;
+        age: number;
+        hobbies: string[];
+        role: [number, string];
+} = {
     name: 'Charlie',
     age: 30,
-    hobbies: ['Sports', 'Cooking']
+    hobbies: ['Sports', 'Cooking'],
+    role: [2, 'author'] // Exactly two elements, we know the length
 };
-var favoriteActivities;
+
+// To add an element
+person.role.push('admin');
+// person.role[1] = 10; // This assignment will fail due to position 1 is a string
+
+
+let favoriteActivities: string[];
 // favoriteActivities = 'Sports'; !! Error
 favoriteActivities = ['Sports']; // Is possible to assign a string array
 // favoriteActivities = ['Sports', 1] !!! Error is not possible to assign an integer to an string array
 // possible solution:
 // let favoriteActivities: any[]; !!! Not recommended but is possible
+
+
+
 // console.log(person);
 console.log(person.name);
-for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
-    var hobby = _a[_i];
+
+for (const hobby of person.hobbies) {
     console.log(hobby);
+}
+*/
+// ? ===================================================================== 2.20
+// Enums
+var Role;
+(function (Role) {
+    Role[Role["ADMIN"] = 0] = "ADMIN";
+    Role[Role["READ_ONLY"] = 1] = "READ_ONLY";
+    Role[Role["AUTHOR"] = 2] = "AUTHOR";
+})(Role || (Role = {}));
+;
+var person = {
+    name: 'Charlie',
+    age: 30,
+    hobbies: ['Sports', 'Cooking'],
+    role: Role.ADMIN
+};
+if (person.role == Role.ADMIN) {
+    console.log("Is ADMIN");
 }
