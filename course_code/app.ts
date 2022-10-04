@@ -32,11 +32,12 @@ const combinedNames = combine('Charlie ', 'and Ceci');
 console.log(combinedNames);
 */
 
-// ! ================================================================ 2.22
+// ! ================================================================ 2.23
 // ! Literal types
 
-function combine(n1: number | string, n2: number | string, /*resultConversion: string*/ resultConversion: 'as-number' | 'as-text') {
-    let result;
+/*
+function combine(n1: number | string, n2: number | string, /*resultConversion: string*/ resultConversion: //'as-number' | 'as-text') {
+    //let result;
 
     /*if (typeof n1 === 'number' && n2 === 'number') {
         result = n1 + n2;
@@ -50,7 +51,7 @@ function combine(n1: number | string, n2: number | string, /*resultConversion: s
     } else {
         return result.toString();
     }*/
-
+/*
     // Alternative
     if (typeof n1 === 'number' && n2 === 'number' || resultConversion === 'as-number') {
         result = +n1 + +n2;
@@ -60,6 +61,37 @@ function combine(n1: number | string, n2: number | string, /*resultConversion: s
     
     
     return result;
+}
+
+const combinedAges = combine(39, 35, 'as-number');
+console.log(combinedAges);
+
+const combinedStringAges = combine('39', '35', 'as-number');
+console.log(combinedStringAges);
+
+
+const combinedNames = combine('Charlie ', 'and Ceci', 'as-text');
+console.log(combinedNames);
+*/
+
+// ! ================================================================ 2.24
+// ! Type aliases
+
+type Combinable = number | string;
+type conversionDescriptor = 'as-number' | 'as-text';
+
+function combine(n1: Combinable, n2: Combinable, resultConversion: conversionDescriptor) {
+    
+    let result;
+
+    if (typeof n1 === 'number' && n2 === 'number' || resultConversion === 'as-number') {
+        result = +n1 + +n2;
+    } else {
+        result = n1.toString() + n2.toString();
+    }
+    
+    return result;
+    
 }
 
 const combinedAges = combine(39, 35, 'as-number');
