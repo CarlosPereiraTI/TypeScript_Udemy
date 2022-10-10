@@ -1,107 +1,45 @@
-// ! ================================================================ 2.22
-// ! Union types
+// ! ================================================================ 2.29
+// ! The unknown type
 /*
-// function combine(n1: number, n2: number) {
-//     const result = n1 + n2;
-//     return result;
-// }
+let userInput: unknown;
+let userName: string;
 
-// const combinedAges = combine(39, 35);
-// console.log(combinedAges);
+userInput = 5;
+userInput = "Charlie";
 
-// If we try to combine strings, it will failed
-// Union types are helpful here '|'
+// We can assign any value
 
-function combine(n1: number | string, n2: number | string) {
-    let result;
+// userName = userInput; -> error
 
-    if (typeof n1 === 'number' && n2 === 'number') {
-        result = n1 + n2;
-    } else {
-        result = n1.toString() + n2.toString();
-    }
-    
-    
-    return result;
+// will be necessary to check the type
+
+if (typeof userInput === 'string') {
+    userName = userInput;
 }
-
-const combinedAges = combine(39, 35);
-console.log(combinedAges);
-
-const combinedNames = combine('Charlie ', 'and Ceci');
-console.log(combinedNames);
 */
 
-// ! ================================================================ 2.23
-// ! Literal types
+// ! ================================================================ 2.30
+// ! The never type
 
-/*
-function combine(n1: number | string, n2: number | string, /*resultConversion: string*/ resultConversion: //'as-number' | 'as-text') {
-    //let result;
+let userInput: unknown;
+let userName: string;
 
-    /*if (typeof n1 === 'number' && n2 === 'number') {
-        result = n1 + n2;
-    } else {
-        result = n1.toString() + n2.toString();
-    }
+userInput = 5;
+userInput = "Charlie";
 
-    if (resultConversion === 'as-number') {
-        // + in the front of an input force it to a number
-        return +result;
-    } else {
-        return result.toString();
-    }*/
-/*
-    // Alternative
-    if (typeof n1 === 'number' && n2 === 'number' || resultConversion === 'as-number') {
-        result = +n1 + +n2;
-    } else {
-        result = n1.toString() + n2.toString();
-    }
-    
-    
-    return result;
+// We can assign any value
+
+// userName = userInput; -> error
+
+// will be necessary to check the type
+
+if (typeof userInput === 'string') {
+    userName = userInput;
 }
 
-const combinedAges = combine(39, 35, 'as-number');
-console.log(combinedAges);
-
-const combinedStringAges = combine('39', '35', 'as-number');
-console.log(combinedStringAges);
-
-
-const combinedNames = combine('Charlie ', 'and Ceci', 'as-text');
-console.log(combinedNames);
-*/
-
-// ! ================================================================ 2.24
-// ! Type aliases
-
-type Combinable = number | string;
-type conversionDescriptor = 'as-number' | 'as-text';
-
-function combine(n1: Combinable, n2: Combinable, resultConversion: conversionDescriptor) {
-    
-    let result;
-
-    if (typeof n1 === 'number' && n2 === 'number' || resultConversion === 'as-number') {
-        result = +n1 + +n2;
-    } else {
-        result = n1.toString() + n2.toString();
-    }
-    
-    return result;
-    
+function generateError(message:string, code: number): void {
+    throw {message: message, errorCode: code}
 }
 
-const combinedAges = combine(39, 35, 'as-number');
-console.log(combinedAges);
-
-const combinedStringAges = combine('39', '35', 'as-number');
-console.log(combinedStringAges);
-
-
-const combinedNames = combine('Charlie ', 'and Ceci', 'as-text');
-console.log(combinedNames);
-
+generateError("An error occurred", 500);
 

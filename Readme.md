@@ -95,3 +95,4 @@ To:
       return checkAge > user.age;
     }
 
+Helpful resources: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
