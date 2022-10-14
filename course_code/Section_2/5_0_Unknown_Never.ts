@@ -20,7 +20,7 @@ if (typeof userInput === 'string') {
 
 // ! ================================================================ 2.30
 // ! The never type
-
+/*
 let userInput: unknown;
 let userName: string;
 
@@ -42,4 +42,4 @@ function generateError(message:string, code: number): void {
 }
 
 generateError("An error occurred", 500);
-
+*/

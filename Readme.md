@@ -96,3 +96,16 @@ To:
     }
 
 Helpful resources: https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+
+
+SECTION 3:
+=================================================================================
+
+Compile the .ts file automatically with the server running: "tsc app.ts -w" or "tsc app.ts --watch"
+
+Compile multiple files: "tsc --init" a new file will be created tsconfig.json
+  - From now on we can compile all files with "tsc -w"
+
+tsconfig.json
+On this file we can setup our dev environment like include and exclude files en subfolders during the compilation (check lines 104 to 112 i tsconfig.json)
+
