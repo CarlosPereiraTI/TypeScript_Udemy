@@ -7,4 +7,8 @@ button?.addEventListener('click', () => {
 
 const userName = "Charlie";
 
-console.log(userName);
+// console.log(userName);
+console.log(`Hello ${userName}`);
+console.log("Disconnecing...");
+
+
