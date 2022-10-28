@@ -111,7 +111,7 @@ console.log(addNumbers);
 // ! ====================================================== 4.54
 // Array destructuring
 
-
+/*
 const hobbies = ['Sports', 'Cooking'];
 const activeHobbies = ['TV'];
 
@@ -141,4 +141,324 @@ const [hobby1, hobby2, ...remainingHobbies] = hobbies;
 console.log(hobbies, hobby1, hobby2);
 
 const { firstName: userName, age } = person;
+*/
 
+// ! ====================================================== 5.59
+// Creating first class
+// console.log("Hello typescript!");
+/*
+class Department {
+    name: string;
+
+    constructor(n: string) {
+        this.name = n;
+    }
+}
+
+const accounting = new Department('Accounting');
+console.log(accounting);
+*/
+
+
+// ! ====================================================== 5.61
+// Creating first class
+// console.log("Hello typescript!");
+/*
+class Department {
+    name: string;
+
+    constructor(n: string) {
+        this.name = n;
+    }
+
+    describe(this: Department){
+        console.log('Department: ' + this.name);
+        
+    }
+}
+
+const accounting = new Department('Accounting');
+console.log(accounting);
+accounting.describe();
+
+const accountingCopy = {name: 'dummy', describe: accounting.describe };
+accountingCopy.describe();
+*/
+
+// ! ====================================================== 5.62
+// Creating first class
+// console.log("Hello typescript!");
+/*
+class Department {
+    name: string;
+    private employees: string[] = [];
+
+    constructor(n: string) {
+        this.name = n;
+    }
+
+    describe(this: Department){
+        console.log('Department: ' + this.name);
+        
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation(){
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+const accounting = new Department('Accounting');
+
+accounting.addEmployee('Charlie');
+
+console.log(accounting);
+
+accounting.describe();
+accounting.printEmployeeInformation();
+
+// const accountingCopy = {name: 'dummy', describe: accounting.describe };
+// accountingCopy.describe();
+*/
+
+// ! ====================================================== 5.63
+// Creating first class
+// console.log("Hello typescript!");
+/*
+class Department {
+    // private id: string;
+    // private name: string;
+    private employees: string[] = [];
+
+    constructor(private id: string, public name: string) {
+        // this.name = n;
+    }
+
+    describe(this: Department){
+        console.log(`Department (${this.id}: ${this.name}`);
+        
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation(){
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+const accounting = new Department('id','Accounting');
+
+accounting.addEmployee('Charlie');
+
+console.log(accounting);
+
+accounting.describe();
+accounting.printEmployeeInformation();
+
+// const accountingCopy = {name: 'dummy', describe: accounting.describe };
+// accountingCopy.describe();
+*/
+
+
+// ! ====================================================== 5.64
+// Read only
+// console.log("Hello typescript!");
+/*
+class Department {
+    // private id: string;
+    // private name: string;
+    private employees: string[] = [];
+
+    constructor(private readonly id: string, public name: string) {
+        // this.name = n;
+    }
+
+    describe(this: Department){
+        console.log(`Department (${this.id}: ${this.name}`);
+        
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation(){
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+const accounting = new Department('id','Accounting');
+
+accounting.addEmployee('Charlie');
+
+console.log(accounting);
+
+accounting.describe();
+accounting.printEmployeeInformation();
+
+// const accountingCopy = {name: 'dummy', describe: accounting.describe };
+// accountingCopy.describe();
+*/
+
+
+// ! ====================================================== 5.64
+// Inheritance
+// console.log("Hello typescript!");
+/*
+class Department {
+    // private id: string;
+    // private name: string;
+    private employees: string[] = [];
+
+    constructor(private readonly id: string, public name: string) {
+        // this.name = n;
+    }
+
+    describe(this: Department){
+        console.log(`Department ${this.id}: ${this.name}`);
+        
+    }
+
+    addEmployee(employee: string) {
+        this.employees.push(employee);
+    }
+
+    printEmployeeInformation(){
+        console.log(this.employees.length);
+        console.log(this.employees);
+    }
+}
+
+class itDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+        super(id, 'IT');
+        this.admins = admins;
+    }
+}
+
+const it = new itDepartment('d1', ['Max']);
+
+it.addEmployee('Charlie');
+
+console.log(it);
+
+it.describe();
+it.printEmployeeInformation();
+
+// const accountingCopy = {name: 'dummy', describe: accounting.describe };
+// accountingCopy.describe();
+*/
+
+
+// ! ====================================================== 5.67
+class Department {
+    // private readonly id: string;
+    // private name: string;
+    protected employees: string[] = [];
+
+    constructor(private readonly id: string, public name: string) {
+    // this.id = id;
+    // this.name = n;
+    }
+
+    describe(this: Department) {
+    console.log(`Department (${this.id}): ${this.name}`);
+    }
+
+    addEmployee(employee: string) {
+    // validation etc
+    // this.id = 'd2';
+    this.employees.push(employee);
+    }
+
+    printEmployeeInformation() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+    }
+}
+
+class ITDepartment extends Department {
+    admins: string[];
+    constructor(id: string, admins: string[]) {
+    super(id, 'IT');
+    this.admins = admins;
+    }
+}
+
+class AccountingDepartment extends Department {
+    private lastReport: string;
+
+    get mostRecentReport() {
+    if (this.lastReport) {
+        return this.lastReport;
+    }
+    throw new Error('No report found.');
+    }
+
+    set mostRecentReport(value: string) {
+    if (!value) {
+        throw new Error('Please pass in a valid value!');
+    }
+    this.addReport(value);
+    }
+
+    constructor(id: string, private reports: string[]) {
+    super(id, 'Accounting');
+    this.lastReport = reports[0];
+    }
+
+    addEmployee(name: string) {
+    if (name === 'Max') {
+        return;
+    }
+    this.employees.push(name);
+    }
+
+    addReport(text: string) {
+    this.reports.push(text);
+    this.lastReport = text;
+    }
+
+    printReports() {
+    console.log(this.reports);
+    }
+}
+
+
+const it = new ITDepartment('d1', ['Max']);
+
+it.addEmployee('Max');
+it.addEmployee('Manu');
+
+// it.employees[2] = 'Anna';
+
+it.describe();
+it.name = 'NEW NAME';
+it.printEmployeeInformation();
+
+console.log(it);
+
+const accounting = new AccountingDepartment('d2', []);
+
+accounting.mostRecentReport = 'Year End Report';
+accounting.addReport('Something went wrong...');
+console.log(accounting.mostRecentReport);
+
+accounting.addEmployee('Max');
+accounting.addEmployee('Manu');
+
+accounting.printReports();
+accounting.printEmployeeInformation();
+
+// const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+
+// accountingCopy.describe();
