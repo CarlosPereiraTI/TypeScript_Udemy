@@ -1256,6 +1256,7 @@ if (userInputElement) {
 // ! ====================================================== 6.87
 // Index Properties
 
+/*
 type Admin = {
     name: string;
     privileges: string[];
@@ -1374,3 +1375,301 @@ const errorBag: ErrorContainer = {
     email: 'Not a valid email!',
     username: 'Must start with a capital character!'
 };
+*/
+
+// ! ====================================================== 7.94
+// Built-in generics
+
+/*
+// is a type that can connect with another type
+// const names: Array = [];
+// const names: any[] = [];
+const names: Array<string> = []; // generic type
+// names[0].split(' ');
+
+// Promises
+const promise: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('This is done!');
+    }, 2000);
+});
+
+promise.then(data => {
+    data.split(' ');
+});
+*/
+
+
+// ! ====================================================== 7.95
+// Creating a generic function
+
+// function merge(objA: object, objB: object) {
+//     return Object.assign(objA, objB);
+// }
+/*
+function merge<T, U>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+// console.log(merge({name: 'Martina'}, {age: 3}));
+const mergeObj = merge({name: 'Martina'}, {age: 3});
+*/
+
+// ! ====================================================== 7.96
+// Workign with constants
+
+/*
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
+*/
+
+
+// ! ====================================================== 7.97
+// Another Generic Function
+
+/*
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+    descriptionText = 'Got 1 element.';
+    } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Sports', 'Cooking']));
+*/
+
+
+// ! ====================================================== 7.98
+// The keyof
+
+/*
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+    descriptionText = 'Got 1 element.';
+    } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Sports', 'Cooking']));
+
+function extractAndConvert<T extends object, U extends keyof T>(
+    obj: T,
+    key: U
+) {
+    return 'Value: ' + obj[key];
+}
+
+extractAndConvert({ name: 'Max' }, 'name');
+*/
+
+
+// ! ====================================================== 7.99
+// Generic Classes
+
+/*
+// const names: Array<string> = []; // string[]
+// // names[0].split(' ');
+
+// const promise: Promise<number> = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve(10);
+//   }, 2000);
+// });
+
+// promise.then(data => {
+//   // data.split(' ');
+// })
+
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+    descriptionText = 'Got 1 element.';
+    } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Sports', 'Cooking']));
+
+function extractAndConvert<T extends object, U extends keyof T>(
+    obj: T,
+    key: U
+) {
+    return 'Value: ' + obj[key];
+}
+
+extractAndConvert({ name: 'Max' }, 'name');
+
+class DataStorage<T extends string | number | boolean> {
+    private data: T[] = [];
+
+    addItem(item: T) {
+    this.data.push(item);
+    }
+
+    removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+        return;
+    }
+    this.data.splice(this.data.indexOf(item), 1); // -1
+    }
+
+    getItems() {
+    return [...this.data];
+    }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Max');
+textStorage.addItem('Manu');
+textStorage.removeItem('Max');
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+// const maxObj = {name: 'Max'};
+// objStorage.addItem(maxObj);
+// objStorage.addItem({name: 'Manu'});
+// // ...
+// objStorage.removeItem(maxObj);
+// console.log(objStorage.getItems());
+*/
+
+
+// ! ====================================================== 7.102
+// Generic types vs Union Types
+
+
+function merge<T extends object, U extends object>(objA: T, objB: U) {
+    return Object.assign(objA, objB);
+}
+
+const mergedObj = merge({ name: 'Max', hobbies: ['Sports'] }, { age: 30 });
+console.log(mergedObj);
+
+interface Lengthy {
+    length: number;
+}
+
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+    let descriptionText = 'Got no value.';
+    if (element.length === 1) {
+    descriptionText = 'Got 1 element.';
+    } else if (element.length > 1) {
+    descriptionText = 'Got ' + element.length + ' elements.';
+    }
+    return [element, descriptionText];
+}
+
+console.log(countAndDescribe(['Sports', 'Cooking']));
+
+function extractAndConvert<T extends object, U extends keyof T>(
+    obj: T,
+    key: U
+) {
+    return 'Value: ' + obj[key];
+}
+
+extractAndConvert({ name: 'Max' }, 'name');
+
+class DataStorage<T extends string | number | boolean> {
+    private data: T[] = [];
+
+    addItem(item: T) {
+    this.data.push(item);
+    }
+
+    removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+        return;
+    }
+    this.data.splice(this.data.indexOf(item), 1); // -1
+    }
+
+    getItems() {
+    return [...this.data];
+    }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Max');
+textStorage.addItem('Manu');
+textStorage.removeItem('Max');
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+// const maxObj = {name: 'Max'};
+// objStorage.addItem(maxObj);
+// objStorage.addItem({name: 'Manu'});
+// // ...
+// objStorage.removeItem(maxObj);
+// console.log(objStorage.getItems());
+
+interface CourseGoal {
+    title: string;
+    description: string;
+    completeUntil: Date;
+}
+
+function createCourseGoal(
+    title: string,
+    description: string,
+    date: Date
+): CourseGoal {
+    let courseGoal: Partial<CourseGoal> = {};
+    courseGoal.title = title;
+    courseGoal.description = description;
+    courseGoal.completeUntil = date;
+    return courseGoal as CourseGoal;
+}
+
+const names: Readonly<string[]> = ['Max', 'Anna'];
+// names.push('Manu');
+// names.pop();
