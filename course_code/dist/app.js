@@ -1,5 +1,11 @@
 "use strict";
 // const button = document.querySelector("button");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 // button?.addEventListener('click', () => {
 //     console.log("Clicked!");
 // });
@@ -2389,6 +2395,19 @@ class ProjectInput {
 const prjInput = new ProjectInput();
 */
 // * 9.123
+// autobind decorator
+function autobind(target, methodName, descriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor = {
+        configurable: true,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        }
+    };
+    return adjDescriptor;
+}
+// Project input class
 class ProjectInput {
     constructor() {
         this.templateElement = document.getElementById('project-input');
@@ -2407,10 +2426,13 @@ class ProjectInput {
         console.log(this.titleInputElement.value);
     }
     configure() {
-        this.element.addEventListener('submit', this.submitHandler.bind(this));
+        this.element.addEventListener('submit', this.submitHandler);
     }
     attach() {
         this.hostElement.insertAdjacentElement('afterbegin', this.element);
     }
 }
+__decorate([
+    autobind
+], ProjectInput.prototype, "submitHandler", null);
 const prjInput = new ProjectInput();
