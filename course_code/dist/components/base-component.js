@@ -1,9 +1,5 @@
-"use strict";
-// Component Base Class
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.something = void 0;
-exports.something = '...';
-class Component {
+export const something = '...';
+export default class Component {
     constructor(templateId, hostElementId, insertAtStart, newElementId) {
         this.templateElement = document.getElementById(templateId);
         this.hostElement = document.getElementById(hostElementId);
@@ -18,4 +14,4 @@ class Component {
         this.hostElement.insertAdjacentElement(insertAtBeginning ? 'afterbegin' : 'beforeend', this.element);
     }
 }
-exports.default = Component;
+//# sourceMappingURL=base-component.js.map

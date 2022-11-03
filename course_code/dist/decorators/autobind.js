@@ -1,8 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.autobind = void 0;
-// autobind decorator
-function autobind(_, _2, descriptor) {
+export function autobind(_, _2, descriptor) {
     const originalMethod = descriptor.value;
     const adjDescriptor = {
         configurable: true,
@@ -13,4 +9,4 @@ function autobind(_, _2, descriptor) {
     };
     return adjDescriptor;
 }
-exports.autobind = autobind;
+//# sourceMappingURL=autobind.js.map

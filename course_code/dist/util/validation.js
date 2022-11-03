@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.validate = void 0;
-function validate(validatableInput) {
+export function validate(validatableInput) {
     let isValid = true;
     if (validatableInput.required) {
         isValid = isValid && validatableInput.value.toString().trim().length !== 0;
@@ -26,4 +23,4 @@ function validate(validatableInput) {
     }
     return isValid;
 }
-exports.validate = validate;
+//# sourceMappingURL=validation.js.map

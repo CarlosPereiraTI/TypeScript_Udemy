@@ -1,44 +1,14 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectInput = void 0;
-const base_component_js_1 = __importDefault(require("./base-component.js"));
-const Validation = __importStar(require("../util/validation.js"));
-const autobind_js_1 = require("../decorators/autobind.js");
-const project_state_js_1 = require("../state/project-state.js");
-// ProjectInput Class
-class ProjectInput extends base_component_js_1.default {
+import Cmp from './base-component.js';
+import * as Validation from '../util/validation.js';
+import { autobind as Autobind } from '../decorators/autobind.js';
+import { projectState } from '../state/project-state.js';
+export class ProjectInput extends Cmp {
     constructor() {
         super('project-input', 'app', true, 'user-input');
         this.titleInputElement = this.element.querySelector('#title');
@@ -89,12 +59,12 @@ class ProjectInput extends base_component_js_1.default {
         const userInput = this.gatherUserInput();
         if (Array.isArray(userInput)) {
             const [title, desc, people] = userInput;
-            project_state_js_1.projectState.addProject(title, desc, people);
+            projectState.addProject(title, desc, people);
             this.clearInputs();
         }
     }
 }
 __decorate([
-    autobind_js_1.autobind
+    Autobind
 ], ProjectInput.prototype, "submitHandler", null);
-exports.ProjectInput = ProjectInput;
+//# sourceMappingURL=project-input.js.map

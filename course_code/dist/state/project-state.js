@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.projectState = exports.ProjectState = void 0;
-const project_js_1 = require("../models/project.js");
+import { Project, ProjectStatus } from '../models/project.js';
 class State {
     constructor() {
         this.listeners = [];
@@ -10,7 +7,7 @@ class State {
         this.listeners.push(listenerFn);
     }
 }
-class ProjectState extends State {
+export class ProjectState extends State {
     constructor() {
         super();
         this.projects = [];
@@ -23,7 +20,7 @@ class ProjectState extends State {
         return this.instance;
     }
     addProject(title, description, numOfPeople) {
-        const newProject = new project_js_1.Project(Math.random().toString(), title, description, numOfPeople, project_js_1.ProjectStatus.Active);
+        const newProject = new Project(Math.random().toString(), title, description, numOfPeople, ProjectStatus.Active);
         this.projects.push(newProject);
         this.updateListeners();
     }
@@ -40,5 +37,5 @@ class ProjectState extends State {
         }
     }
 }
-exports.ProjectState = ProjectState;
-exports.projectState = ProjectState.getInstance();
+export const projectState = ProjectState.getInstance();
+//# sourceMappingURL=project-state.js.map
